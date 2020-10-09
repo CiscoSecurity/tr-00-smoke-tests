@@ -22,14 +22,15 @@ def test_smoke_integrations_errors(observables, module_headers):
         **{'headers': module_headers}
     )
 
-    errors = response_from_all_modules.get('errors', None)
+    errors = response_from_all_modules.get('errors', [])
     errors_info = dict()
 
     if errors:
         for module in errors:
-            errors_info[module["module"]] = module["message"]
+            if module["code"] != 'too many requests':
+                errors_info[module["module"]] = module["message"]
 
-        raise AssertionError(
-            f'There was an error in {list(errors_info.keys())} module/modules.'
-            f'Message/Messages respectively - {list(errors_info.values())}'
-        )
+        if errors_info:
+            raise AssertionError(f'There was an error in such module/modules '
+                                 f'{list(errors_info.items())}'
+                                 )
