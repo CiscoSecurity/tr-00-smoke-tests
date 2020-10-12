@@ -19,3 +19,10 @@ before_script:
 script:
 - flake8 .
 - pytest --verbose tests/
+
+notifications:
+  email:
+    recipients:
+      - travis-notifications@softserveinc.com
+    on_success: never
+    on_failure: always

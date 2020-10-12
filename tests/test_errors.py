@@ -1,3 +1,4 @@
+from time import sleep
 from ctrlibrary.threatresponse.enrich import enrich_observe_observables
 
 
@@ -24,6 +25,8 @@ def test_smoke_integrations_errors(observables, module_headers):
 
     errors = response_from_all_modules.get('errors', [])
     errors_info = dict()
+
+    sleep(30)
 
     if errors:
         for module in errors:
