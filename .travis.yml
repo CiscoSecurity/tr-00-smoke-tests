@@ -23,6 +23,6 @@ script:
 notifications:
   email:
     recipients:
-      - travis-notifications@softserveinc.com
+      - TravisNotifications@softserveinc.com
     on_success: never
     on_failure: always
