@@ -23,6 +23,6 @@ script:
 notifications:
   email:
     recipients:
-      - travisnotifications@gmail.com
+      - greenpasha22@gmail.com
     on_success: never
     on_failure: always
