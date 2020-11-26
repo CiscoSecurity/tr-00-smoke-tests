@@ -11,8 +11,7 @@ def test_ms_machine_id_doesnt_support_by_TR(module_headers):
         1. Send request to enrich observe observable endpoint
 
     Expectedresults:
-        1. Check that errors in response body doesn't contain date from
-        TR
+        1. Check that response body doesn't contain data.
 
     Importance: Minor
     """
@@ -23,4 +22,10 @@ def test_ms_machine_id_doesnt_support_by_TR(module_headers):
     )
 
     assert not response_from_all_modules.get('data')
-    assert response_from_all_modules.get('errors')
+
+    errors_with_ms_id = []
+    for error in response_from_all_modules.get('errors'):
+        if 'module_name' not in error:
+            if 'ms_machine_id' in error['type']:
+                errors_with_ms_id.append(error)
+    assert errors_with_ms_id
