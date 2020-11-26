@@ -21,8 +21,7 @@ script:
 - pytest --verbose tests/
 
 notifications:
-  email:
-    recipients:
-      - TravisNotifications@softserveinc.com
-    on_success: never
-    on_failure: always
+  webhooks:
+    urls:
+      - https://euqsx55b02.execute-api.us-east-1.amazonaws.com/dev
+    on_start:   always
