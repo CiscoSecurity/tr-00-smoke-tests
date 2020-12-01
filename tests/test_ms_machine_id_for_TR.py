@@ -1,6 +1,8 @@
 from ctrlibrary.threatresponse.enrich import enrich_observe_observables
+from pytest import mark
 
 
+@mark.skip(reason='Deprecated')
 def test_ms_machine_id_doesnt_support_by_TR(module_headers):
     """Perform testing for verifying that 'ms_machine_id' type doesn't
     support by TR.
